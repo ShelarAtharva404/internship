@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade Calculator</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      background-color: #2c3e50;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .container {
+      background: linear-gradient(145deg, #3498db, #9b59b6);
+      padding: 40px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      color: #ecf0f1;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    input {
+      background-color: #34495e;
+      color: #ecf0f1;
+    }
+
+    input:focus {
+      outline: none;
+      border: 2px solid #8e44ad;
+    }
+
+    button {
+      background-color: #8e44ad;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #3498db;
+      color: white;
+      transform: scale(1.08);
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ecf0f1;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Grade Calculator</h1>
+    <input type="number" id="marks" placeholder="Enter your marks (0-100)" min="0" max="100" />
+    <button onclick="calculateGrade()">Calculate Grade</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateGrade() {
+      const marks = parseFloat(document.getElementById('marks').value);
+      let grade = '';
+
+      if (isNaN(marks) || marks < 0 || marks > 100) {
+        document.getElementById('result').textContent = 'Please enter valid marks between 0 and 100.';
+        return;
+      }
+
+      if (marks >= 90) {
+        grade = 'A';
+      } else if (marks >= 80) {
+        grade = 'B';
+      } else if (marks >= 70) {
+        grade = 'C';
+      } else if (marks >= 60) {
+        grade = 'D';
+      } else {
+        grade = 'F';
+      }
+
+      document.getElementById('result').textContent = `Your Grade: ${grade}`;
+    }
+  </script>
+</body>
+</html>
